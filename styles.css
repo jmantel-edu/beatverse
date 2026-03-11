@@ -1,0 +1,10 @@
+#timer {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#story {
+    display: grid;
+    align-items: center;
+    justify-self: center;
+    width: 50%;
+}
