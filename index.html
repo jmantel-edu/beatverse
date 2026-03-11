@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Panic Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <a href="game/game.html">Go to game</a>
+    <a href="game/game.html">Go to Rhythm Game (for debug purposes)</a>
     <h1>Panic Room</h1>
+    <h1 id="timer" style="float: right;"></h1>
     <div id="story">
         <img id="image">
         <p id="text"></p>
+        <p id="recommendation"></p>
+        <p id="choices"></p>
+
         <input id="code" type="text" placeholder="Enter a code...">
     </div>
 </body>

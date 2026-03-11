@@ -1,5 +1,6 @@
 let chart = [];
 let gameTime = 0;
+let timeSinceLastFrame = 0;
 const CANVAS = document.getElementById("canvas")
 function Note(time, lane, speed = 1) {
     this.time = time; // Time in ms when the note should be hit
@@ -10,6 +11,19 @@ function Note(time, lane, speed = 1) {
 function loadChart(chartID, bpm) {
 
 }
+
+function clock() {
+    if (timeSinceLastFrame > (1/60)*1000) {
+        timeSinceLastFrame = 0;
+        return true;
+    } else {
+        return false;
+    }
+}
+function incrementFrameCounter() {
+    timeSinceLastFrame++;
+}
+
 function drawText(font, content, x, y, color) {
     // Note: Font should be "Sizepx FontName". Ex.: "30px Arial" "15px Verdana"
     const C = document.getElementById("canvas");
@@ -51,11 +65,19 @@ function gameLoop() {
         }
     }
 
+    function noteLock(notes) {
+        // Prevent notes that are ahead of the latest note from being hit
+        for (let i = 0; i < notes.length; i++) {
+            
+        }
+    }
+
 }
 
 function preStartLoop() {
-
+    let ready = false;
     drawText("30px Courier", "Press Enter", 50, 50, "black")
+
 }
 
 window.addEventListener("load", function () {

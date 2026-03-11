@@ -1,0 +1,11 @@
+{
+    "heading": "Central Room",
+    "bodyText": "You are imprisoned in the Panic Room of the Multiverse Connection Agency. You have 30 minutes to open the door to the North before Time's Up.",
+    "choices": {
+        "west": "Check the Western Room",
+        "south": "Check the Southern Room",
+        "east": "Check the Eastern Room",
+        "north": "Try to open the door to the Northern Room"
+    },
+    "image": "https://placehold.co/600x400?text=Placeholder"
+}
