@@ -1,4 +1,7 @@
 let time = 1800;
+let hasWestItem = false;
+let hasEastItem = false;
+let hasSouthItem = false;
 
 function calcTime() {
     hours = Math.floor(time / 3600);
@@ -28,7 +31,7 @@ start();
 function loadStory(scene) {
     // This section of code (for loading the JSONs) borrowed from Geeks For Geeks
     // https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
-    fetch("./story/" + scene + ".json")
+    return fetch("./story/" + scene + ".json")
     .then(response => {
         if (!response.ok) {
             throw new Error(`Could not retrieve story file due to an error: ${response.status}`);
@@ -41,7 +44,7 @@ function loadStory(scene) {
 
 function applyStoryContent(story) {
     console.log(story);
-    storyData = JSON.parse(story);
+    storyData = story;
     // Apply story content to the page
     const IMAGE = document.getElementById("image"); 
     const MAINTEXT = document.getElementById("text");
@@ -54,10 +57,12 @@ function applyStoryContent(story) {
         RECOMMEND.innerText = storyData.recommend;
     }
     CHOICES.innerHTML = "<ul>";
+    console.log(storyData.choices.length);
     for (let i = 0; i < storyData.choices.length; i++) {
         CHOICES.innerHTML += "<li>";
-        CHOICES.innerHTML += "<button onclick = 'applyStoryContent(loadStory(" + storyData.choices.keys[i] + "))'></li>";  
+        CHOICES.innerHTML += "<button onclick = 'applyStoryContent(loadStory(" + storyData.choices.keys[i] + "))'></li>"; 
+        console.log("<button onclick = 'applyStoryContent(loadStory(" + storyData.choices.keys[i] + "))'></li>");
     }
 }
 
-applyStoryContent(loadStory("central"));
+loadStory("central").then(data => applyStoryContent(data));

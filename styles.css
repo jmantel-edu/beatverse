@@ -7,4 +7,27 @@
     align-items: center;
     justify-self: center;
     width: 50%;
+    background-color: white;
+}
+
+#story img {
+    max-width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: black;
+
+}
+
+h1 {
+    color:white;
+}
+
+#sidePanel {
+    display: block;
+    float: right;
+    background-color: white;
 }
