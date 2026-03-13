@@ -1,0 +1,9 @@
+{
+    "heading": "Empty Scene",
+    "bodyText": "Scene description",
+    "recommend": "Hints, if applicable",
+    "choices": {
+        "choice": "Leave empty for no choices"
+    },
+    "image": "https://placehold.co/600x400?text=North+Room"
+}

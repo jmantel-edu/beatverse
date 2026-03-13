@@ -20,6 +20,10 @@ function updateTimer() {
     } else if (time < 900) {
         TIMER.style.color = "yellow";
     }
+    if (time < 0) {
+        TIMER.innerText = "Time's Up";
+        timesUp();
+    }
 }
 
 function start() {
@@ -58,11 +62,17 @@ function applyStoryContent(story) {
     }
     CHOICES.innerHTML = "<ul>";
     console.log(storyData.choices.length);
-    for (let i = 0; i < storyData.choices.length; i++) {
+    for (let i = 0; i < Object.keys(storyData.choices).length; i++) {
         CHOICES.innerHTML += "<li>";
-        CHOICES.innerHTML += "<button onclick = 'applyStoryContent(loadStory(" + storyData.choices.keys[i] + "))'></li>"; 
-        console.log("<button onclick = 'applyStoryContent(loadStory(" + storyData.choices.keys[i] + "))'></li>");
+        CHOICES.innerHTML += "<button onclick = 'applyStoryContent(loadStory(`" + Object.keys(storyData.choices)[i] + "`))'>"+ Object.values(storyData.choices)[i] + "</button></li>"; 
+        console.log("<button onclick = 'applyStoryContent(loadStory(" + Object.keys(storyData.choices)[i] + "))'></button></li>");
     }
 }
 
 loadStory("central").then(data => applyStoryContent(data));
+
+function timesUp() {
+    let audio = new Audio("./media/timesup.mp3");
+    audio.play()
+    loadStory("bad1").then(data => applyStoryContent(data));
+}

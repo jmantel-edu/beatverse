@@ -1,6 +1,6 @@
 {
     "heading": "Central Room",
-    "bodyText": "You are imprisoned in the Panic Room of the Multiverse Connection Agency. You have 30 minutes to open the door to the North and escape before Time's Up.\nThere are Universe Portals to your South, East, and West",
+    "bodyText": "You are imprisoned in the Panic Room of the Multiverse Connection Agency. You have 30 minutes to open the door to the North and escape before Time's Up.\nThere are Universe Portals to your South, East, and West.",
     "recommend": "If you have a code from the room past the door, enter it now...",
     "choices": {
         "west": "Check the Western Room",
@@ -8,5 +8,5 @@
         "east": "Check the Eastern Room",
         "north": "Try to open the door to the Northern Room"
     },
-    "image": "https://placehold.co/600x400?text=Placeholder"
+    "image": "https://placehold.co/600x400?text=Central+Room"
 }

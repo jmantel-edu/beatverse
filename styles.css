@@ -31,3 +31,8 @@ h1 {
     float: right;
     background-color: white;
 }
+
+button {
+    background-color: black;
+    color: white;
+}
