@@ -13,7 +13,7 @@ function loadChart(chartID, bpm) {
 }
 
 function clock() {
-    if (timeSinceLastFrame > (1/60)*1000) {
+    if (timeSinceLastFrame >= 20) { // Try to run at 50FPS
         timeSinceLastFrame = 0;
         return true;
     } else {
@@ -77,7 +77,6 @@ function gameLoop() {
 function preStartLoop() {
     let ready = false;
     drawText("30px Courier", "Press Enter", 50, 50, "black")
-
 }
 
 window.addEventListener("load", function () {

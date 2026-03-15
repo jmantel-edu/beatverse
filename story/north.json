@@ -1,9 +1,10 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "The Northern Door",
+    "bodyText": "The Northern door has a plaque with the motto of the Multiversal Connection Agency on it\n\n \"SCIENCE, MAGIC, AND MONEY, BECAUSE WHAT ELSE ARE WE SUPPOSED TO RUN ON?\"\n\n",
+    "recommend": "You can open the door after solving all three puzzles.",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "exit": "Try to open the door",
+        "central": "Back to the central room"
     },
-    "image": "https://placehold.co/600x400?text=North+Room"
+    "image": "https://placehold.co/600x400?text=North+Door"
 }

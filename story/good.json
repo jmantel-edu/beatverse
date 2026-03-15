@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
+    "heading": "Finally Escaped",
+    "bodyText": "The keyboard and notes disappear. Another portal opens up, showing the outside of the MCA building. Suddenly, you feel a pressure on your feet, and upon looking down, see that security straps have locked them down. You finally cross through the portal, and it closes behind you.\nOne guard yells, \"There he is! Get him!\" But it's no use. The platform accelerates to highway speeds, and carries you to freedom.",
     "recommend": "Hints, if applicable",
     "choices": {
-        "choice": "Leave empty for no choices"
+
     },
-    "image": "https://placehold.co/600x400?text=Good+Ending"
+    "image": "https://placehold.co/600x400/00FF00/FFFFFF?text=Good+Ending"
 }

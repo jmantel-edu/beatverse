@@ -29,24 +29,21 @@ function updateTimer() {
     }
 }
 
-function start() {
-    setInterval(updateTimer, 1000);
-}
-
-start();
+var timerID = setInterval(updateTimer, 1000);
 
 function loadStory(scene) {
     // This section of code (for loading the JSONs) borrowed from Geeks For Geeks
     // https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
+
     return fetch("./story/" + scene + ".json")
     .then(response => {
         if (!response.ok) {
             throw new Error(`Could not retrieve story file due to an error: ${response.status}`);
         }
+        currentScene = scene;
         return response.json();
     }) .then(data => {console.log(data); return(data)})
     .catch(error => console.error("Failed to fetch data:", error));
-    
 }
 
 function applyStoryContent(story) {
@@ -64,21 +61,29 @@ function applyStoryContent(story) {
     RECOMMEND.innerText = storyData.recommend;
     CHOICES.innerHTML = "<ul>";
     for (let i = 0; i < Object.keys(storyData.choices).length; i++) {
+        console.log(Object.keys(storyData.choices)[i] == "exit");
         // Don't render buttons for already-solved rooms
         if (Object.keys(storyData.choices)[i] == "west" && hasWestItem) {
-            CHOICES.innerHTML += "";
+            CHOICES.innerHTML += "<li style='color: green;'>West Room Solved.</li>";
             continue;
         }
         if (Object.keys(storyData.choices)[i] == "east" && hasEastItem) {
+            CHOICES.innerHTML += "<li style='color: green;'>East Room Solved.</li>";
             continue;
         }
         if (Object.keys(storyData.choices)[i] == "south" && hasSouthItem) {
+            CHOICES.innerHTML += "<li style='color: green;'>South Room Solved.</li>";
             continue;
         }
+        // Skip over rendering certain buttons if conditions are not met
         if (Object.keys(storyData.choices)[i] == "code") {
-            console.log("true")
             continue;
         }
+        if (Object.keys(storyData.choices)[i] == "exit" && !(hasEastItem && hasWestItem && hasSouthItem)) {
+            RECOMMEND.innerText += "\nYou don't have all the keys to open the door right now. Let's try again after getting all the keys!";
+            continue
+        }
+
         CHOICES.innerHTML += `<li><button onclick="loadStory('` + Object.keys(storyData.choices)[i] 
         + `').then(data => applyStoryContent(data)); currentScene ='` 
         + Object.keys(storyData.choices)[i] + `';">` 
@@ -86,6 +91,20 @@ function applyStoryContent(story) {
     }
     if ("code" in storyData) {
         CHOICES.innerHTML += `<li><button onclick="loadStory('` + currentScene + `').then(data => tryCode(data));">Try Code</button></li>`;
+    }
+    if (currentScene == "central") {
+        // TODO: Multiple acceptable codes in Central room only to accept codes from rhythm game section
+    }
+    if (currentScene == "west_item") { // Award items upon reaching the corresponding scenes
+        hasWestItem = true;
+    } else if (currentScene == "east_item") {
+        hasEastItem = true;
+    } else if (currentScene == "south_item") {
+        hasSouthItem = true;
+    }
+
+    if (currentScene == "exit") {
+        clearTimeout(timerID);
     }
     CHOICES.innerHTML += "</ul>";
 }

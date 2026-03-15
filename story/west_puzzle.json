@@ -5,7 +5,7 @@
     "choices": {
         "west": "Leave the Sheriff's Office for now"
     },
-    "image": "https://placehold.co/600x400?text=West+Puzzle",
+    "image": "./media/west_puzzle.png",
     "code": "acfhdgbe",
     "success": "west_item"
 }

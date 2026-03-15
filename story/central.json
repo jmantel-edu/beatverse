@@ -1,7 +1,7 @@
 {
     "heading": "Central Room",
-    "bodyText": "You are imprisoned in the Panic Room of the Multiverse Connection Agency. You have 30 minutes to open the door to the North and escape before Time's Up.\nThere are Universe Portals to your South, East, and West.",
-    "recommend": "If you have a code from the room past the door, enter it now...",
+    "bodyText": "You are imprisoned in the Panic Room of the Multiverse Connection Agency for a crime that you did not commit. You have 30 minutes to open the door to the North and escape before Time's Up.\nThere are Universe Portals to your South, East, and West.",
+    "recommend": "If you have a code from the room past the door, enter it now. The Try Code button will appear when necessary.",
     "choices": {
         "west": "Check the Western Room",
         "south": "Check the Southern Room",
