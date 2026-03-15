@@ -1,9 +1,10 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "A Fantastic World",
+    "bodyText": "After stepping through the portal, you find yourself in the middle of a field. There's a forest to your left, and a village right in front of you, though it's in the distance.\nYou hear someone calling from behind you and the portal, saying \"Heyyyy! Are you a Traveller? Do you mind helping me out a little?\"",
+    "recommend": "",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "east_puzzle": "Go to help them out",
+        "central": "Back to the Central Room"
     },
     "image": "https://placehold.co/600x400?text=East+Room"
 }

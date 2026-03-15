@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "The Escape",
+    "bodyText": "The door unlocks with the sound of a working lock mechanism. You ready your body to make a mad dash, but as you open the door, there is nothing but... another portal, but this one leads to nothing but darkness and a single floating platform.\nYou step through it onto the floating platform. Suddenly, a keyboard appears at your hands. Only the A, S, L, and Semicolon keys are pressable. Four lanes form in front of you. You remember that the founder of the Multiversal Connection Agency was a big rhythm gamer back in his day...",
+    "recommend": "During the rhythm game, use the A, S, L, and Semicolon keys to hit notes when their centers reach the line at the bottom of the screen. You must earn a sufficient score to escape!",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "game": "Let's Go!"
     },
     "image": "https://placehold.co/600x400?text=Exit"
 }

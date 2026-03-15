@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "Slimes Sorted",
+    "bodyText": "\"I think... it all looks right! Yay! You did it! You really did it!\" She says, happy to finally be able to do what she pleases with the slimes. Suddenly, her cheerful expression disappears.\n\"Wait... you're on a time limit, right...? That's what the last person who came from that portal said. I'll make it quick for you, then. Please take this magical power orb; it can hold a lot of magical energy. I hope it helps you.\"\nAs you leave, she waves goodbye, calling out to you: \"I hope we can see each other again some day!\"",
+    "recommend": "You got the Eastern Key! With the Southern Key and the Western Key, you can open the Northern door.",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "central": "Back to the Central room"
     },
     "image": "https://placehold.co/600x400?text=Get+East+Item"
 }

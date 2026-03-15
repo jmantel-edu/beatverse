@@ -2,6 +2,7 @@ let time = 1800;
 let hasWestItem = false;
 let hasEastItem = false;
 let hasSouthItem = false;
+let currentScene = "central";
 
 function calcTime() {
     hours = Math.floor(time / 3600);
@@ -20,9 +21,11 @@ function updateTimer() {
     } else if (time < 900) {
         TIMER.style.color = "yellow";
     }
-    if (time < 0) {
+    if (time == 0) {
         TIMER.innerText = "Time's Up";
         timesUp();
+    } if (time < 0) {
+        restart();
     }
 }
 
@@ -47,32 +50,83 @@ function loadStory(scene) {
 }
 
 function applyStoryContent(story) {
+    console.log(currentScene)
     console.log(story);
     storyData = story;
     // Apply story content to the page
     const IMAGE = document.getElementById("image"); 
     const MAINTEXT = document.getElementById("text");
-    const RECOMMEND = document.getElementById("recommendation"); // Provides a hint, e.g. when the puzzle of an area is solved, display a hint saying that there's nothing left to do here
+    const RECOMMEND = document.getElementById("recommendation"); // Provides a hint when necessary
     const CHOICES = document.getElementById("choices");
 
     IMAGE.src = storyData.image;
     MAINTEXT.innerText = storyData.bodyText;
-    if ("recommend" in storyData) {
-        RECOMMEND.innerText = storyData.recommend;
-    }
+    RECOMMEND.innerText = storyData.recommend;
     CHOICES.innerHTML = "<ul>";
-    console.log(storyData.choices.length);
     for (let i = 0; i < Object.keys(storyData.choices).length; i++) {
-        CHOICES.innerHTML += "<li>";
-        CHOICES.innerHTML += "<button onclick = 'applyStoryContent(loadStory(`" + Object.keys(storyData.choices)[i] + "`))'>"+ Object.values(storyData.choices)[i] + "</button></li>"; 
-        console.log("<button onclick = 'applyStoryContent(loadStory(" + Object.keys(storyData.choices)[i] + "))'></button></li>");
+        // Don't render buttons for already-solved rooms
+        if (Object.keys(storyData.choices)[i] == "west" && hasWestItem) {
+            CHOICES.innerHTML += "";
+            continue;
+        }
+        if (Object.keys(storyData.choices)[i] == "east" && hasEastItem) {
+            continue;
+        }
+        if (Object.keys(storyData.choices)[i] == "south" && hasSouthItem) {
+            continue;
+        }
+        if (Object.keys(storyData.choices)[i] == "code") {
+            console.log("true")
+            continue;
+        }
+        CHOICES.innerHTML += `<li><button onclick="loadStory('` + Object.keys(storyData.choices)[i] 
+        + `').then(data => applyStoryContent(data)); currentScene ='` 
+        + Object.keys(storyData.choices)[i] + `';">` 
+        + Object.values(storyData.choices)[i] + `</button></li>`;
     }
+    if ("code" in storyData) {
+        CHOICES.innerHTML += `<li><button onclick="loadStory('` + currentScene + `').then(data => tryCode(data));">Try Code</button></li>`;
+    }
+    CHOICES.innerHTML += "</ul>";
 }
+
 
 loadStory("central").then(data => applyStoryContent(data));
 
 function timesUp() {
     let audio = new Audio("./media/timesup.mp3");
-    audio.play()
-    loadStory("bad1").then(data => applyStoryContent(data));
+    audio.play();
+    restart(true);
+}
+
+function restart(fail) {
+    if (!fail) { // Manual restart
+        if (window.confirm("Are you sure you want to restart? The timer will be reset and your progress will be erased.") == true) {
+            loadStory("central").then(data => applyStoryContent(data));
+            hasEastItem = false;
+            hasWestItem = false;
+            hasSouthItem = false;
+            time = 1800;
+        }
+    } else { // Failure-initated restart
+        loadStory("bad1").then(data => applyStoryContent(data));
+        CHOICES.innerHTML += "<li><button onclick='loadStory('central').then(data => applyStoryContent(data)); hasEastItem = false; hasWestItem = false; hasSouthItem = false; time = 1800>Restart</button>"
+    }
+}
+
+function tryCode(scene) {
+    const ERROR = document.getElementById("error");
+    const EXPECTED = scene.code;
+    const SUCCESS = scene.success;
+    const CODEENTRY = document.getElementById("code");
+    console.log(CODEENTRY.value.toLowerCase());
+    console.log(!CODEENTRY.value.toLowerCase() == EXPECTED);
+    
+    if (CODEENTRY.value.toLowerCase() != EXPECTED) {
+        ERROR.innerText = "Incorrect code! Try again.";
+    } else {
+        loadStory(SUCCESS).then(data => applyStoryContent(data));
+        ERROR.innerText = "";
+        CODEENTRY.value = "";
+    }
 }

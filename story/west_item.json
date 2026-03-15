@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "A Sorted Prison",
+    "bodyText": "\"You've done good!\" The Sheriff says, watching the prisoners in their cells, sitting quietly. \"Quiet for the first time in months! I don't know where you come from, but I'll tell you what, this deserves a reward!\"\nThe Sheriff digs in his desk and eventually pulls out a crisp dollar bill. \"How 'bout it? A whole dollar! This pays for two weeks of beer at the Saloon!\"\nHaving no interest in drinking, you say thanks and decide to hurry back to the Central Room with the bill.",
+    "recommend": "You got the Western Key! With the Southern Key and the Eastern Key, you can open the Northern door.",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "central": "Go back to the Central Room"
     },
     "image": "https://placehold.co/600x400?text=Get+West+Item"
 }

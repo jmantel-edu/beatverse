@@ -1,9 +1,9 @@
 {
     "heading": "Time's Up",
-    "bodyText": "Unfortunately, your time has ran out. ",
-    "recommend": "Click the Restart button in the upper-right to restart the game.",
+    "bodyText": "Unfortunately, your time has ran out. The multiversal portals close, and an agent steps in through the North door, carrying a gun. His last words to you: \n\n \"Time's up.\"",
+    "recommend": "Achieved Bad Ending 1 -- Fail to open the North Door before Time's Up.\nClick the Restart button in the upper-right to restart the game.",
     "choices": {
 
     },
-    "image": "https://placehold.co/600x400?text=Bad+Ending+1"
+    "image": "https://placehold.co/600x400/000000/FFFFFF?text=Bad+Ending+1"
 }

@@ -1,9 +1,10 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "The Wild West",
+    "bodyText": "After stepping through the portal, you find yourself in a scene that reminds you of the Westerns you used to love. You appear to be in a small mining town with a few rows of buildings. There are a lot of yelling voices coming from inside the Sheriff's office.",
+    "recommend": "",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "central": "Go back through the portal to the Central Room",
+        "west_puzzle": "Go inside the Sheriff's office"
     },
     "image": "https://placehold.co/600x400?text=West+Room"
 }

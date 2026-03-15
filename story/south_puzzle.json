@@ -1,7 +1,7 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "The Observer's Stars",
+    "bodyText": "The robot leads you towards a man in a white lab coat, poring over documents. Each document has an illustration of a different star.\n\"Master,\" the robot says, causing the man to jolt. \"A traveller has arrived. They are willing to provide you assistance.\"\n\"Hello from me as well,\" The man says, slightly tired. \"I've just been trying to sort these stars for weeks, but it's been so slow. My good friend, the robot who greeted you, somehow does not have a faster method built into him. Do you mind teaching him about quick sort?\n\"Say you have a shuffled list of 26 elements from A to Z. You pick a random element to serve as an anchor: P. You go through the remaining elements, and if the element you choose goes before P -- your anchor -- you move it to P's immediate left, and otherwise, you move it to P's immediate right. Then, on one of the sides of your list, split by your anchor, you select a new anchor for just that side, and you just keep sorting til everything comes out in order!\n\"... Which is... something that my friend will need to be taught. Just one round will be good enough for him to pick it up!\" Words fail you at the man's request, but you must do it if you want to escape from here.",
+    "recommend": "",
     "choices": {
         "choice": "Leave empty for no choices"
     },

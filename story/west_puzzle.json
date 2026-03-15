@@ -1,9 +1,11 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "Sheriff's Office",
+    "bodyText": "The Sheriff greets you loudly over the voices as you walk inside. \"Hey there! You the one I called to help sort out all these outlaws?\"\nBefore you can clarify, he asks you to follow, and brings you to a room holding all the bickering prisoners. \n\"EVERYBODY QUIET DOWN!\" He yelled sharply at the prisoners. \"I got a guy over here who'll sort you out, so y'all'll finally stop shoutin' at each other.\"\n He turns back to you, and says \"OK... do your thing now.\" before leaving to return to the front desk. The prisoners instantly continue bickering the moment he steps through the door. This is certainly an urgent problem...",
+    "recommend": "Sort all the prisoners in their correct cells according to the conditions in the image.\nYour answer should be eight letters long. (ex. ABCDEFGH), and each letter in the answer corresponds to a cell in the diagram (1, 2… 8).\nCells 6, 7, and 8 are adjacent to each other.\nCells 3, 4, and 5 are adjacent to each other.\nCells 1 and 2 are only adjacent to themselves.",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "west": "Leave the Sheriff's Office for now"
     },
-    "image": "https://placehold.co/600x400?text=West+Puzzle"
+    "image": "https://placehold.co/600x400?text=West+Puzzle",
+    "code": "acfhdgbe",
+    "success": "west_item"
 }

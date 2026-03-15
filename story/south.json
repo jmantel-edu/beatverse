@@ -1,9 +1,10 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "Inside the Observatory",
+    "bodyText": "The moment you step through the portal, a semi-humanoid robot wheels up to you and bows slightly. \n\"Greetings, Traveller. You have arrived at a good time. My Master, the owner of this Observatory, is in need of assistance that I cannot provide. Please follow me this way.\"",
+    "recommend": "",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "south_puzzle": "Go help the robot's master",
+        "central": "Back to the central room for now"
     },
     "image": "https://placehold.co/600x400?text=South+Room"
 }

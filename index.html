@@ -12,15 +12,16 @@
     <a href="game/game.html">Go to Rhythm Game (for debug purposes)</a>
     <h1>Panic Room</h1>
     <div id="sidePanel">
-        <button id="restart" style="color: red; background-color: black;">Restart...</button>
+        <button id="restart" style="color: red; background-color: black;" onclick="restart(false)">Restart...</button>
         <h1 id="timer" style="color: black;">30:00</h1>
     </div>
     <div id="story">
         <img id="image">
         <p id="text"></p>
-        <p id="recommendation"></p>
+        <p id="recommendation" style="color:green"></p>
         <p id="choices"></p>
-        <input id="code" type="text" placeholder="Enter a code...">
+        <input id="code" type="text" placeholder="Enter a code..." >
+        <p id="error" style="color: red;"></p>
     </div>
 </body>
 </html>

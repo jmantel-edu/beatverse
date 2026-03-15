@@ -1,9 +1,11 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "A Mage's Predicament",
+    "bodyText": "\"There you are! I was looking for someone to help for a while now,\" She said excitedly as you approached.\n\"Recently, I had an... incident, that caused the creation of a bunch of slimes! Horrible, I know,\" she said with a slightly ashamed look on her face, gesturing towards the multiple differently-colored blobs hopping around inside a pen.\n\"These slimes are of three types! Fire, Water, and Light. Each slime holds within it a specific amount of positive or negative magical energy, but I haven't measured exactly how much.\n\"Slimes can be Inverted too, meaning they have the opposite amount of magical energy -- For example, Positive 2 instead of Negative 2 -- I've ran a few calculations for you, so all you need to do is work things out and solve it for me, 'cause otherwise, I can't sell any of these slimes! I never was the strongest at math...\"\nYou have to stifle a groan as she adds that; math wasn't your strong suit either...",
+    "recommend": "Your answer should be, in order: The magical power of a Fire slime, followed by that of a Water slime, and finally a Light slime, separated by spaces.\n (ex. -5 3 2)",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "east": "Step away for now"
     },
-    "image": "https://placehold.co/600x400?text=East+Puzzle"
+    "image": "https://placehold.co/600x400?text=East+Puzzle",
+    "code": "-1 3 -2",
+    "success": "east_item"
 }

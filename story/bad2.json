@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "Despite Everything",
+    "bodyText": "Unfortunately, even after opening the Northern door, you have failed at the rhythm game that awaits you afterwards. The automated security system of the door called the guards. One of them holds a gun up to your head and says the last words you'll hear:\n\n\"Time's Up.\"",
+    "recommend": "Achieved Bad Ending 2 -- Failed at the Rhythm Game.\nClick the Restart button in the upper-right to restart the game.",
     "choices": {
-        "choice": "Leave empty for no choices"
+
     },
-    "image": "https://placehold.co/600x400?text=Bad+Ending+2"
+    "image": "https://placehold.co/600x400/000000/FFFFFF?text=Bad+Ending+1"
 }
