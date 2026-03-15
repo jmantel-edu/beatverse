@@ -1,9 +1,9 @@
 {
-    "heading": "Empty Scene",
-    "bodyText": "Scene description",
-    "recommend": "Hints, if applicable",
+    "heading": "Learned Method",
+    "bodyText": "\"Method recorded.\" The robot says, after you finish doing one round. \"Master, please pass me the papers.\"\n\"The Observer warily hands his papers to the robot, as if afraid they'll just be shuffled again, but the robot makes quick work, and the stars are sorted in no time flat.\n\"Thank you,\" the Observer said with a gleam in his eyes that looked like it had been missing for a long time. \"The last few travellers to help me said something about having to get back 'before Time's Up,' so I will make it quick.\"\nHe hands you a tiny piece of technology. \"An energy cell. Like a solar panel, it charges if it's left in the sun.\" It'll fit in the place of any of your... what was that historical standard for batteries again...? Ah, right, a AA battery. I'm guessing you don't have much--\"\nYou cut him off before he can keep speaking, wave goodbye to him (and his robot), and step through the portal.",
+    "recommend": "You got the Southern Key! With the Western Key and the Eastern Key, you can open the Northern door.",
     "choices": {
-        "choice": "Leave empty for no choices"
+        "central": "Return to the central room"
     },
     "image": "https://placehold.co/600x400?text=Get+South+Item"
 }
