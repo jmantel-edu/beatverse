@@ -55,6 +55,7 @@ function applyStoryContent(story) {
     const MAINTEXT = document.getElementById("text");
     const RECOMMEND = document.getElementById("recommendation"); // Provides a hint when necessary
     const CHOICES = document.getElementById("choices");
+    document.getElementById("error").innerText = "";
 
     IMAGE.src = storyData.image;
     MAINTEXT.innerText = storyData.bodyText;
@@ -89,12 +90,12 @@ function applyStoryContent(story) {
         + Object.keys(storyData.choices)[i] + `';">` 
         + Object.values(storyData.choices)[i] + `</button></li>`;
     }
-    if ("code" in storyData) {
+    if ("code" in storyData) { // Generate a Try Code button if there is a code requirement in the JSON
         CHOICES.innerHTML += `<li><button onclick="loadStory('` + currentScene + `').then(data => tryCode(data));">Try Code</button></li>`;
+    } else if (currentScene == "central") {
+        CHOICES.innerHTML += `<li><button onclick="tryCentralCode();">Try Code</button></li>`;
     }
-    if (currentScene == "central") {
-        // TODO: Multiple acceptable codes in Central room only to accept codes from rhythm game section
-    }
+
     if (currentScene == "west_item") { // Award items upon reaching the corresponding scenes
         hasWestItem = true;
     } else if (currentScene == "east_item") {
@@ -147,5 +148,19 @@ function tryCode(scene) {
         loadStory(SUCCESS).then(data => applyStoryContent(data));
         ERROR.innerText = "";
         CODEENTRY.value = "";
+    }
+}
+
+function tryCentralCode() { // Code function for Central room only
+    const ERROR = document.getElementById("error");
+    const CODEENTRY = document.getElementById("code");
+
+    
+    if (CODEENTRY.value == "cQ23AxtO") { // Game Clear
+        loadStory("good").then(data => applyStoryContent(data));
+    } else if (CODEENTRY.value == "EnZVwz2S") { // Game Failed
+        loadStory("bad2").then(data => applyStoryContent(data));
+    } else {
+        ERROR.innerText = "Incorrect code! Try again.";
     }
 }

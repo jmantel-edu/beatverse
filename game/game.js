@@ -8,7 +8,7 @@ function Note(time, lane, speed = 1) {
     this.speed = speed; // (Optional) An extra multiplier on top of the default speed
 }
 
-function loadChart(chartID, bpm) {
+function loadChart(chartID, audio, bpm) {
 
 }
 
@@ -65,20 +65,17 @@ function gameLoop() {
         }
     }
 
-    function noteLock(notes) {
-        // Prevent notes that are ahead of the latest note from being hit
-        for (let i = 0; i < notes.length; i++) {
-            
-        }
-    }
+    
 
 }
 
 function preStartLoop() {
     let ready = false;
-    drawText("30px Courier", "Press Enter", 50, 50, "black")
+    drawText("30px Courier", "Press Enter", 50, 50, "black");
+    let preStartListener = window.addEventListener("keydown", gameLoop); 
 }
 
 window.addEventListener("load", function () {
-    preStartLoop()
+    preStartLoop();
+
 })

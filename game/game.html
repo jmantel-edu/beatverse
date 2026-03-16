@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rhythm Game</title>
+    <link rel="stylesheet" href="game.css">
+    <script defer src="game.js"></script>
 </head>
 <body>
-    <div id="canvas-container">
-        <canvas id="canvas" width="675" height="1200"></canvas>
+    <!-- Grid created using https://cssgridgenerator.io/ -->
+    <div class="parent">
+        <div class="div1">
+            <div id="canvas-container">
+                <canvas id="canvas" width="675" height="1200"></canvas>
+            </div>
+        </div>
+        <div class="div2">
+            <h1 id="score">0</h1>
+            <p>Score</p>
+            <h1 id="health">100%</h1>
+            <p>Health</p>
+        </div>
     </div>
+
 </body>
 </html>
