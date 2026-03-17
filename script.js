@@ -21,15 +21,18 @@ function updateTimer() {
     } else if (time < 900) {
         TIMER.style.color = "yellow";
     }
-    if (time == 0) {
+    if (time <= 0) {
         TIMER.innerText = "Time's Up";
-        timesUp();
     } if (time < 0) {
-        restart();
+        timesUp();
+        clearInterval(timerID);
     }
 }
 
-var timerID = setInterval(updateTimer, 1000);
+if (time = 1800) { // Refresh interval upon restart
+    clearInterval(timerID)
+    var timerID = setInterval(updateTimer, 1000);
+}
 
 function loadStory(scene) {
     // This section of code (for loading the JSONs) borrowed from Geeks For Geeks
@@ -84,6 +87,12 @@ function applyStoryContent(story) {
             RECOMMEND.innerText += "\nYou don't have all the keys to open the door right now. Let's try again after getting all the keys!";
             continue
         }
+        // Render redirect to game in the exit scene
+        if (Object.keys(storyData.choices)[i] == "game") {
+            CHOICES.innerHTML += `<li><a href="./game/game.html">Let's go!</a>`
+            continue
+        }
+        
 
         CHOICES.innerHTML += `<li><button onclick="loadStory('` + Object.keys(storyData.choices)[i] 
         + `').then(data => applyStoryContent(data)); currentScene ='` 
@@ -96,6 +105,7 @@ function applyStoryContent(story) {
         CHOICES.innerHTML += `<li><button onclick="tryCentralCode();">Try Code</button></li>`;
     }
 
+
     if (currentScene == "west_item") { // Award items upon reaching the corresponding scenes
         hasWestItem = true;
     } else if (currentScene == "east_item") {
@@ -107,6 +117,11 @@ function applyStoryContent(story) {
     if (currentScene == "exit") {
         clearTimeout(timerID);
     }
+
+    if (currentScene == "good") {
+        RECOMMEND.innerHTML += "Congratulations! You cleared the game! <a href=credits.html>Check out the credits</a>";
+    }
+
     CHOICES.innerHTML += "</ul>";
 }
 
@@ -114,12 +129,13 @@ function applyStoryContent(story) {
 loadStory("central").then(data => applyStoryContent(data));
 
 function timesUp() {
-    let audio = new Audio("./media/timesup.mp3");
+    let audio = new Audio("./media/times_up.mp3");
     audio.play();
     restart(true);
 }
 
 function restart(fail) {
+    console.log(document.getElementById("choices").innerHTML);
     if (!fail) { // Manual restart
         if (window.confirm("Are you sure you want to restart? The timer will be reset and your progress will be erased.") == true) {
             loadStory("central").then(data => applyStoryContent(data));
@@ -130,7 +146,6 @@ function restart(fail) {
         }
     } else { // Failure-initated restart
         loadStory("bad1").then(data => applyStoryContent(data));
-        CHOICES.innerHTML += "<li><button onclick='loadStory('central').then(data => applyStoryContent(data)); hasEastItem = false; hasWestItem = false; hasSouthItem = false; time = 1800>Restart</button>"
     }
 }
 
@@ -154,7 +169,6 @@ function tryCode(scene) {
 function tryCentralCode() { // Code function for Central room only
     const ERROR = document.getElementById("error");
     const CODEENTRY = document.getElementById("code");
-
     
     if (CODEENTRY.value == "cQ23AxtO") { // Game Clear
         loadStory("good").then(data => applyStoryContent(data));

@@ -11,32 +11,41 @@ function drawText(font, content, x, y, color) {
     CTX.fillText(content, x, y);
     CTX.fillStyle = "white";
 }
-
-function prepare() { // Prepare to start the game
-    console.log("Ready to start");
-    window.removeEventListener("keydown", prepare); // Remove the event listener to avoid prepare()-ing multiple times
-    setInterval(gameLoop, 20);
-    let AUDIO = new Audio("../media/audio.mp3");
-    AUDIO.play();
+let AUDIO = new Audio("../media/audio.mp3");
+function prepare(event) { // Prepare to start the game
+    let key = event.key;
+    if (event.key == "h") {
+        chart = hardChart;
+        console.log("Ready to start");
+        window.removeEventListener("keydown", prepare); // Remove the event listener to avoid prepare()-ing multiple times
+        setInterval(gameLoop, 16);
+        AUDIO.play();
+    } else if (event.key == "Enter") {
+        console.log("Ready to start");
+        window.removeEventListener("keydown", prepare); // Remove the event listener to avoid prepare()-ing multiple times
+        setInterval(gameLoop, 16);
+        AUDIO.play();
+    }
 }
 
 let eventListenerAdded = false;
+let perfect = 0;
+let great = 0;
+let ok = 0;
+let miss = 0;
 
-function gameLoop() { // 50FPS game loop
+function gameLoop() { // Approx. 60FPS game loop (Actually like 62.5, because of Math)
     if (!eventListenerAdded) {
-        window.addEventListener("keydown", judgement(event));
-        let perfect = 0;
-        let great = 0;
-        let ok = 0;
-        let miss = 0;
+        window.addEventListener("keydown", judgement);
         eventListenerAdded = true;
     }
 
     CTX.fillStyle = "black";
     CTX.fillRect(0, 0, canvas.width, canvas.height);
     CTX.fillStyle = "white";
-    gameTime += 20;
+    gameTime = AUDIO.currentTime*1000;
     let score = 0;
+    let health = 20;
 
     function renderNotes(notes) {
         // Render note line
@@ -60,7 +69,7 @@ function gameLoop() { // 50FPS game loop
             if (rt < -1500) {
                 break;
             } else if (rt > 300) {
-                notes.shift();
+                chart.shift();
                 console.log("Note dropped off of end");
                 miss += 1;
                 continue;
@@ -80,7 +89,6 @@ function gameLoop() { // 50FPS game loop
         }
     }
     function judgement(event) { // Hit the notes and assign a judgement
-        console.log(event)
         var key = event.key;
         switch (key) {
             case "a":
@@ -96,39 +104,63 @@ function gameLoop() { // 50FPS game loop
                 var lane = 4;
                 break;
         }
-        for (var note = 0; note < notes.length; note++) {
-            var rt = gameTime - notes[note].time;
+        for (var note = 0; note < chart.length; note++) {
+            var rt = gameTime - chart[note].time;
             if (rt < -200) { // Negative RT is early, Positive RT is late
                 break;
-            } else if (notes[note].lane != lane) { // Prevent keypress from affecting a different lane
+            } else if (chart[note].lane != lane) { // Prevent keypress from affecting a different lane
                 continue;
             } else if (rt <= 60 && rt >= -60) {
                 perfect += 1;
-                score += (1_000_000 / notes.length) * 1;
+                score += 3;
+                health += 1
+                delete chart[note];
                 break
             } else if (rt <= 120 && rt >= -120) {
                 great += 1;
-                score += (1_000_000 / notes.length) * 0.8;
+                score += 2;
+                health += 0.5
                 break
             } else if (rt <= 180 && rt >= -180) {
                 ok += 1
-                score += (1_000_000 / notes.length) * 0.5;
+                score += 1;
                 break
             } else if (rt <= 240 && rt >= -240) {
                 miss += 1
+                health -= 5
                 break
             }
+            if (health > 100) {
+                health = 100;
+            }
         }
+        chart = chart.filter(function(element) { // This code borrowed from StackOverflow
+            return element !== undefined;        // https://stackoverflow.com/questions/28607451/removing-undefined-values-from-array
+        });
+        document.getElementById("score").innerText = score;
+        document.getElementById("health").innerText = health;
     }
     
     renderNotes(chart)
     drawText("30px Courier", gameTime/1000, 50, 50, "white");
-    document.getElementById("score").innerText = Math.round(score);
+    
+    document.getElementById("perfect").innerText = "PERFECT: " + perfect;
+    document.getElementById("great").innerText = "GREAT: " + great;
+    document.getElementById("ok").innerText = "OK: " + ok;
+    document.getElementById("miss").innerText = "MISS: " + miss;
+
+    if (gameTime > 250000 && health > 0) { // Game Clear
+        document.getElementById("code").innerHTML = "Game finished. Enter this code in the central room.<br><br>cQ23AxtO<br><br><a href='../index.html'>Back to Central Room</a>"
+
+    } else if (gameTime > 250000 && health < 0) { // Game Failed
+        document.getElementById("code").innerText = "Game finished. Enter this code in the central room.\n\nEnZVwz2S"
+    }
 }
 
 function preStartLoop() {
     let ready = false;
-    drawText("30px Courier", "Press Enter", 50, 50, "white");
+    drawText("30px Courier", "Press Enter for Normal Chart", 50, 50, "white");
+    drawText("30px Courier", "Press H for Hard Chart", 50, 100, "white");
     let preStartListener = window.addEventListener("keydown", prepare); 
 }
 
