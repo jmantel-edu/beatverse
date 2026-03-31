@@ -18,13 +18,13 @@ function prepare(event) { // Prepare to start the game
         chart = hardChart;
         console.log("Ready to start");
         window.removeEventListener("keydown", prepare); // Remove the event listener to avoid prepare()-ing multiple times
-        setInterval(gameLoop, 16);
         AUDIO.play();
+        requestAnimationFrame(gameLoop);
     } else if (event.key == "Enter") {
         console.log("Ready to start");
         window.removeEventListener("keydown", prepare); // Remove the event listener to avoid prepare()-ing multiple times
-        setInterval(gameLoop, 16);
         AUDIO.play();
+        requestAnimationFrame(gameLoop);
     }
 }
 
@@ -34,7 +34,7 @@ let great = 0;
 let ok = 0;
 let miss = 0;
 
-function gameLoop() { // Approx. 60FPS game loop (Actually like 62.5, because of Math)
+function gameLoop(timestamp) { // Game Loop
     if (!eventListenerAdded) {
         window.addEventListener("keydown", judgement);
         eventListenerAdded = true;
@@ -89,7 +89,7 @@ function gameLoop() { // Approx. 60FPS game loop (Actually like 62.5, because of
         }
     }
     function judgement(event) { // Hit the notes and assign a judgement
-        var key = event.key;
+        var key = event.key;    // Tested and working with Chords (multiple notes hit at once)
         switch (key) {
             case "a":
                 var lane = 1;
@@ -110,22 +110,22 @@ function gameLoop() { // Approx. 60FPS game loop (Actually like 62.5, because of
                 break;
             } else if (chart[note].lane != lane) { // Prevent keypress from affecting a different lane
                 continue;
-            } else if (rt <= 60 && rt >= -60) {
+            } else if (rt <= 40 && rt >= -40) {
                 perfect += 1;
                 score += 3;
                 health += 1
                 delete chart[note];
                 break
-            } else if (rt <= 120 && rt >= -120) {
+            } else if (rt <= 80 && rt >= -80) {
                 great += 1;
                 score += 2;
                 health += 0.5
                 break
-            } else if (rt <= 180 && rt >= -180) {
+            } else if (rt <= 120 && rt >= -120) {
                 ok += 1
                 score += 1;
                 break
-            } else if (rt <= 240 && rt >= -240) {
+            } else if (rt <= 160 && rt >= -160) {
                 miss += 1
                 health -= 5
                 break
@@ -155,6 +155,8 @@ function gameLoop() { // Approx. 60FPS game loop (Actually like 62.5, because of
     } else if (gameTime > 250000 && health < 0) { // Game Failed
         document.getElementById("code").innerText = "Game finished. Enter this code in the central room.\n\nEnZVwz2S"
     }
+
+    requestAnimationFrame(gameLoop);
 }
 
 function preStartLoop() {
