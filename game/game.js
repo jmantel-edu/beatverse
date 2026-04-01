@@ -33,8 +33,10 @@ let perfect = 0;
 let great = 0;
 let ok = 0;
 let miss = 0;
+let judgementText = "";
 
 function gameLoop(timestamp) { // Game Loop
+    
     if (!eventListenerAdded) {
         window.addEventListener("keydown", judgement);
         eventListenerAdded = true;
@@ -115,19 +117,23 @@ function gameLoop(timestamp) { // Game Loop
                 score += 3;
                 health += 1
                 delete chart[note];
+                judgementText = rt.toFixed(0);
                 break
             } else if (rt <= 80 && rt >= -80) {
                 great += 1;
                 score += 2;
-                health += 0.5
+                health += 0.5;
+                judgementText = rt.toFixed(0);
                 break
             } else if (rt <= 120 && rt >= -120) {
                 ok += 1
                 score += 1;
+                judgementText = rt.toFixed(0);
                 break
             } else if (rt <= 160 && rt >= -160) {
-                miss += 1
-                health -= 5
+                miss += 1;
+                health -= 5;
+                judgementText = rt.toFixed(0);
                 break
             }
             if (health > 100) {
@@ -144,6 +150,7 @@ function gameLoop(timestamp) { // Game Loop
     renderNotes(chart)
     drawText("30px Courier", gameTime/1000, 50, 50, "white");
     
+    
     document.getElementById("perfect").innerText = "PERFECT: " + perfect;
     document.getElementById("great").innerText = "GREAT: " + great;
     document.getElementById("ok").innerText = "OK: " + ok;
@@ -156,6 +163,7 @@ function gameLoop(timestamp) { // Game Loop
         document.getElementById("code").innerText = "Game finished. Enter this code in the central room.\n\nEnZVwz2S"
     }
 
+    drawText("30px Courier", judgementText, 20, 600, "white");
     requestAnimationFrame(gameLoop);
 }
 
