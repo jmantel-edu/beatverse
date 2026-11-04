@@ -164,7 +164,7 @@ function gameLoop(timestamp) { // Game Loop
         document.getElementById("code").innerHTML = "Game finished. Enter this code in the central room.<br><br>cQ23AxtO<br><br><a href='../index.html'>Back to Central Room</a>"
 
     } else if (gameTime > 250000 && health < 0) { // Game Failed
-        document.getElementById("code").innerText = "Game finished. Enter this code in the central room.\n\nEnZVwz2S"
+        document.getElementById("code").innerText = "Game finished. Enter this code in the central room.<br><br>EnZVwz2S<br><br><a href='../index.html'>Back to Central Room</a>"
     }
 
     drawText("30px Courier", judgementText, 20, 600, "white");
