@@ -112,6 +112,7 @@ function gameLoop(timestamp) { // Game Loop
                 break;
             } else if (chart[note].lane != lane) { // Prevent keypress from affecting a different lane
                 continue;
+            // FIXME: Incorrect handling of judgements: only PERFECTs work properly and other judgements let notes fall and become MISSes
             } else if (rt <= 40 && rt >= -40) {
                 perfect += 1;
                 score += 3;
@@ -123,16 +124,19 @@ function gameLoop(timestamp) { // Game Loop
                 great += 1;
                 score += 2;
                 health += 0.5;
+                delete chart[note];
                 judgementText = rt.toFixed(0);
                 break
             } else if (rt <= 120 && rt >= -120) {
                 ok += 1
                 score += 1;
+                delete chart[note];
                 judgementText = rt.toFixed(0);
                 break
             } else if (rt <= 160 && rt >= -160) {
                 miss += 1;
                 health -= 5;
+                delete chart[note];
                 judgementText = rt.toFixed(0);
                 break
             }
