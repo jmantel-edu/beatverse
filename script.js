@@ -118,9 +118,6 @@ function applyStoryContent(story) {
         clearTimeout(timerID);
     }
 
-    if (currentScene == "good") {
-        RECOMMEND.innerHTML += "Congratulations! You cleared the game! <a href=credits.html>Check out the credits</a>";
-    }
 
     CHOICES.innerHTML += "</ul>";
 }
